@@ -7,13 +7,13 @@ class Beer < ActiveRecord::Base
 
 
   def self.access_db
-    json_file = RestClient.get('http://api.brewerydb.com/v2/styles/?format=json&key=2fbdec68dd2a53cc1eb4689cbeb3fdf6')  
+    json_file = RestClient.get('http://api.brewerydb.com/v2/styles/?format=json&key=')  
     parsed_file = JSON.parse(json_file)    
     parsed_file
   end
 
 
-  #http://api.brewerydb.com/v2/beers?abv=5,8&format=json&key=2fbdec68dd2a53cc1eb4689cbeb3fdf6
+  #http://api.brewerydb.com/v2/beers?abv=5,8&format=json&key=
 
   def self.list_by_style
     access_db
@@ -27,7 +27,7 @@ class Beer < ActiveRecord::Base
 
 
   def self.search
-    json_file = RestClient.get('http://api.brewerydb.com/v2/beers?format=json&key=2fbdec68dd2a53cc1eb4689cbeb3fdf6')  
+    json_file = RestClient.get('http://api.brewerydb.com/v2/beers?format=json&key=')  
     parsed_file = JSON.parse(json_file)    
   end
 end
