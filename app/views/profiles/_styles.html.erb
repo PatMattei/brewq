@@ -1,0 +1,12 @@
+<%= simple_form_for :beer do |f| %>
+  <div class="input-group">
+    <%= f.input  :srm, collection: [":Light", "Dark"] %>
+  </div>
+  <div class="input-group">
+    <%= f.input  :ibu, collection: ["Sweet", "Sour"] %>
+  </div>
+  <div class="input-group">
+    <%= f.input  :abv, collection: ["0-4.9%", "5.0-7.9%"] %>
+  </div>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
