@@ -1,13 +1,19 @@
 <% @beers.each do |beer| %>
+	<% api_key = beer["id"] %>
+
+	<% if Beer.check_db_for_beer(api_key) %>
+		<% Beer.create name:beer['name'], brewery:beer['breweries'][0]['name'], api_id:beer['id'], style:beer['style']['name'], abv:beer['abv'], srm:beer['srmId'], ibu:beer['ibu'], tags:beer['tags'], description:beer['description'] %>
+	<% end %>
+
 	<div class="found_beer">
-		NAME: <%= beer["name"] %><br>
-		BREWERY: <%= beer["breweries"][0]["name"] %><br>
-		LABEL: <%= beer["labels"] %><br>
-		STYLE: <%= beer["style"]["name"] %><br>
-		ABV: <%= beer["abv"] %><br>
-		SRM: <%= beer["srmId"] %><br>
-		IBU: <%= beer["ibu"] %><br>
-		DESCRIPTION: <%= beer["description"] %><br>
+		NAME: <%= beer['name'] %><br>
+		BREWERY: <%= beer['breweries'][0]['name'] %><br>
+		LABEL: <%= beer['labels'] %><br>
+		STYLE: <%= beer['style']['name'] %><br>
+		ABV: <%= beer['abv'] %><br>
+		SRM: <%= beer['srmId'] %><br>
+		IBU: <%= beer['ibu'] %><br>
+		DESCRIPTION: <%= beer['description'] %><br>
 
 		Recent Reviews:
 
