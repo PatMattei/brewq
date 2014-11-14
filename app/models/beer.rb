@@ -17,4 +17,12 @@ class Beer < ActiveRecord::Base
   def self.check_db_for_beer(api_id)
     Beer.where(:api_id => "#{api_id}").blank?
   end
+
+  def self.get_reviews
+    if Review.where(:beer_id).blank?
+      "Write the first review"
+    else
+      "Show Review"
+    end
+  end
 end

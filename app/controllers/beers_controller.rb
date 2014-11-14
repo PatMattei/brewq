@@ -7,6 +7,7 @@ class BeersController < ApplicationController
 
   def show
     @beer = Beer.find(params[:id])
+    #@beer = Beer.includes(:reviews => :user).find(params[:id])
   end
 
   def new
@@ -42,6 +43,8 @@ class BeersController < ApplicationController
     @beer.destroy
     redirect_to root_path, notice: 'Beer deleted'
   end
+
+
 
 private
 

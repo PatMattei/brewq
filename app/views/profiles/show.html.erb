@@ -2,7 +2,9 @@
 <p>Avatar</p>
 
 <h2>What are you in the mood for?</h2>
-<br />
+<br>
+
+<%= "You are  logged in as #{current_user.email}" %>
 
 <%= render 'search' unless @beers %>
 
@@ -11,3 +13,12 @@
 <% end %>
 
 <h3>Your Reviews</h3>
+
+
+
+<% current_user.reviews.each do |review| %>
+	<br>Name: <%= Beer.find(review.beer_id)["name"] %>
+	<br>Score: <%= review.score %> 
+	<br>Body: <%= review.body %>
+	<hr>
+ <% end %>

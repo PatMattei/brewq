@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
   end
 
   def search_beer
-    @beers = Beer.get_from_api(params['beer']['abv'], params['beer']['taste'], params['beer']['color'])['data'].sample(3)
+    @beers = Beer.get_from_api(params['beer']['abv'], params['beer']['taste'], params['beer']['color'])['data'].take(3)
     render :show
   end
 end
