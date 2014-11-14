@@ -1,7 +1,7 @@
 <% @beers.each do |beer| %>
-	<% api_key = beer["id"] %>
+	<% api_id = beer["id"] %>
 
-	<% if Beer.check_db_for_beer(api_key) %>
+	<% if Beer.check_db_for_beer(api_id) %>
 		<% Beer.create name:beer['name'], brewery:beer['breweries'][0]['name'], api_id:beer['id'], style:beer['style']['name'], abv:beer['abv'], srm:beer['srmId'], ibu:beer['ibu'], tags:beer['tags'], description:beer['description'] %>
 	<% end %>
 
@@ -14,13 +14,20 @@
 		SRM: <%= beer['srmId'] %><br>
 		IBU: <%= beer['ibu'] %><br>
 		DESCRIPTION: <%= beer['description'] %><br>
-
-		Recent Reviews:<br>
-		<br>
-
 		
+		<br>
+		Recent Reviews:<br>
+		<% beer_db = Beer.find_by(api_id: "#{api_id}")['id'] %>
+		<%= beer_db %>
+
+		<% if Review.find_by(beer_id: "#{beer_db}")==nil %>
+			No Reviews
+		<% else %>
+			<%= Review.find_by(beer_id: "#{beer_db}")["body"] %>
+		<% end %>
+			<br>
 
 		Leave a Review:
 	</div>
-	<br>
+	<hr>
 <% end %>
