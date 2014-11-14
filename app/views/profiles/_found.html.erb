@@ -1,0 +1,17 @@
+<% @beers.each do |beer| %>
+	<div class="found_beer">
+		NAME: <%= beer["name"] %><br>
+		BREWERY: <%= beer["breweries"][0]["name"] %><br>
+		LABEL: <%= beer["labels"] %><br>
+		STYLE: <%= beer["style"]["name"] %><br>
+		ABV: <%= beer["abv"] %><br>
+		SRM: <%= beer["srmId"] %><br>
+		IBU: <%= beer["ibu"] %><br>
+		DESCRIPTION: <%= beer["description"] %><br>
+
+		Recent Reviews:
+
+		Leave a Review:
+	</div>
+	<br>
+<% end %>

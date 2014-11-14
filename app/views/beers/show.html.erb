@@ -1,20 +1,23 @@
 <h2 class='text-center'><%= @beer.name %></h2>
+<h2 class='text-center'>By <%= @beer.brewery %></h2>
+
 <hr>
 <br>
-<div class="row">
-  <div class="text-center">
 
-  </div>
+	<%= image_tag(@beer.label) %>
 
-  <h4>Description:</h4>
-  <p><%= @beer.description %></p>
+  	<h4>Description:</h4>
+  	<p><%= @beer.description %></p>
 
+      Score: <%= @beer.score %>
+      style: <%= @beer.style %>
+      abv: <%= @beer.abv %>
+      srm: <%= @beer.srm %>
+      ibu: <%= @beer.ibu %>
+      tags: <%= @beer.tags %>
 
-
-  <h4>Reviews:</h4>
-  <% @beer.reviews.each do |review| %>
-    <p>By: <%= review.user.first_name %><br><%= review.body %></p>
-  <% end %>
-
-  <%= link_to 'Edit', edit_beer_path(@beer) %> | <%= link_to 'Destroy', beer_path(@beer), method: :delete %>
+  	<h4>Reviews:</h4>
+  	<% @beer.reviews.each do |review| %>
+    	<p>By: <%= review.user.first_name %><br><%= review.body %></p>
+  	<% end %>
 </div>

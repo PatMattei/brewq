@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root "profiles#show"
-
+  post '/' => "profiles#show"
+  post "profiles/search_beer" => "profiles#search_beer", as: :profile_beer_search
 
   resources :beers
   resources :reviews

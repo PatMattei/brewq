@@ -15,12 +15,16 @@ ActiveRecord::Schema.define(version: 20141109191119) do
 
   create_table "beers", force: true do |t|
     t.string   "name"
+    t.string   "brewery"
+    t.string   "api_id"
     t.string   "score"
     t.string   "style"
-    t.string   "year"
     t.string   "abv"
+    t.string   "srm"
+    t.string   "ibu"
     t.string   "tags"
     t.string   "description"
+    t.string   "label"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,14 +32,6 @@ ActiveRecord::Schema.define(version: 20141109191119) do
   create_table "beers_users", force: true do |t|
     t.integer "beer_id"
     t.integer "user_id"
-  end
-
-  create_table "breweries", force: true do |t|
-    t.string   "name"
-    t.string   "website"
-    t.string   "location"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "reviews", force: true do |t|

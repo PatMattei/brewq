@@ -44,3 +44,6 @@ gem 'brewery_db'
 gem 'json', '~> 1.8.1'
 gem 'simple_form', '~> 3.1.0rc1'
 gem 'rest-client'
+
+
+gem 'dotenv-rails', groups: [:development, :test]
