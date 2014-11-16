@@ -29,6 +29,11 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.9)
+    better_errors (1.1.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     brewery_db (0.2.4)
       faraday (~> 0.8.0)
       faraday_middleware (~> 0.8)
@@ -42,6 +47,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    debug_inspector (0.0.2)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -150,6 +156,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors (~> 1.1.0)
+  binding_of_caller
   brewery_db
   coffee-rails (~> 4.0.0)
   devise

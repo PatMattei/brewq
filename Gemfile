@@ -45,5 +45,9 @@ gem 'json', '~> 1.8.1'
 gem 'simple_form', '~> 3.1.0rc1'
 gem 'rest-client'
 
+group :development  do
+  gem 'binding_of_caller'
+  gem 'better_errors', '~> 1.1.0'
+end
 
 gem 'dotenv-rails', groups: [:development, :test]
