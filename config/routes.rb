@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   post '/' => "profiles#show"
   post "profiles/search_beer" => "profiles#search_beer", as: :profile_beer_search
 
-  resources :beers
-  resources :reviews
+  resources :beers do
+    resources :reviews
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
