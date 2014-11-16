@@ -1,0 +1,9 @@
+<%= simple_form_for @beer do |f| %>
+<% f.simple_fields_for :reviews do |p| %>
+  <div class="input-group">
+    <%= p.input  :body %>
+  </div>
+  <br>
+  <%= p.submit class: 'btn btn-primary' %>
+  <% end %>
+<% end %>

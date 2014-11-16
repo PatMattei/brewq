@@ -2,7 +2,7 @@ class Beer < ActiveRecord::Base
   has_many :users, :through => :reviews
 
   has_many :reviews
-
+accepts_nested_attributes_for :reviews
 
   def self.show_label
     beer = Beer.find(params[:id])

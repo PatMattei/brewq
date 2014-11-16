@@ -10,14 +10,20 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @review = Review.new
+    @beer = Beer.find(params[:beer_id])
+    @beer.reviews.build
   end
 
   def create
-    @review = Review.new(beer_params)
+    @review = Review.new(review_params)
+    @review.save
+    # current_user.reviews << @review
+    # current_user.save
+    @beer = Beer.find(params[:beer_id])
+    @beer.reviews << @review
 
-    if @review.save
-      redirect_to @review
+    if @beer.save
+      redirect_to @beer
     else
       render :new
     end
@@ -30,7 +36,7 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
 
-    if @review.update(beer_params)
+    if @review.update(review_params)
       redirect_to @review
     else
       render :edit

@@ -1,33 +1,34 @@
 <% @beers.each do |beer| %>
-	<% api_id = beer["id"] %>
+	<div class="col-md-4">
+		<% api_id = beer["id"] %>
 
-	<% if Beer.check_db_for_beer(api_id) %>
-		<% Beer.create name:beer['name'], brewery:beer['breweries'][0]['name'], api_id:beer['id'], style:beer['style']['name'], abv:beer['abv'], srm:beer['srmId'], ibu:beer['ibu'], tags:beer['tags'], description:beer['description'] %>
-	<% end %>
-
-	<div class="found_beer">
-		NAME: <%= beer['name'] %><br>
-		BREWERY: <%= beer['breweries'][0]['name'] %><br>
-		LABEL: <%= beer['labels'] %><br>
-		STYLE: <%= beer['style']['name'] %><br>
-		ABV: <%= beer['abv'] %><br>
-		SRM: <%= beer['srmId'] %><br>
-		IBU: <%= beer['ibu'] %><br>
-		DESCRIPTION: <%= beer['description'] %><br>
-		
-		<br>
-		Recent Reviews:<br>
-		<% beer_db = Beer.find_by(api_id: "#{api_id}")['id'] %>
-		<%= beer_db %>
-
-		<% if Review.find_by(beer_id: "#{beer_db}")==nil %>
-			No Reviews
-		<% else %>
-			<%= Review.find_by(beer_id: "#{beer_db}")["body"] %>
+		<% if Beer.check_db_for_beer(api_id) %>
+			<% Beer.create name:beer['name'], brewery:beer['breweries'][0]['name'], api_id:beer['id'], style:beer['style']['name'], abv:beer['abv'], srm:beer['srmId'], ibu:beer['ibu'], tags:beer['tags'], description:beer['description'] %>
 		<% end %>
-			<br>
 
-		Leave a Review:
+
+		<div id="found_beer">
+			<%= link_to "../beers/#{Beer.find_by(api_id: "#{api_id}")['id']}" do %>
+				<div id="found_beer_info">
+					NAME: <%= beer['name'] %><br>
+					BREWERY: <%= beer['breweries'][0]['name'] %><br>
+					LABEL: <%= beer['labels'] %><br>
+					STYLE: <%= beer['style']['name'] %><br>
+					ABV: <%= beer['abv'] %><br>
+					SRM: <%= beer['srmId'] %><br>
+					IBU: <%= beer['ibu'] %><br>
+					DESCRIPTION: <%= beer['description'] %><br>
+				</div>		
+			<% end %>
+			
+			Recent Reviews:
+			<div class="found_reviews">
+				<%= Review.find_review_author(api_id)  %><br>
+				<%= Review.find_review(api_id) %><br>
+			</div>
+			<% user_id = current_user.id.to_i %>
+			<%= Review.create_review(api_id, user_id) %>
+		</div>
+		<%= link_to "Add a review for this beer", new_beer_review_path(Beer.find_by(api_id: "#{api_id}")['id']) %>
 	</div>
-	<hr>
 <% end %>

@@ -7,7 +7,6 @@ class BeersController < ApplicationController
 
   def show
     @beer = Beer.find(params[:id])
-    #@beer = Beer.includes(:reviews => :user).find(params[:id])
   end
 
   def new
@@ -49,6 +48,6 @@ class BeersController < ApplicationController
 private
 
   def beer_params
-    params.require(:beer).permit(:name, :brewery, :description, :tags, :thumbnail)
+    params.require(:beer).permit(:reviews_attributes, :name, :brewery, :description, :tags, :thumbnail)
   end
 end
