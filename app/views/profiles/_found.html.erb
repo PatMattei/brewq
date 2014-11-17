@@ -4,7 +4,7 @@
 		<% beer_db = Beer.find_by(api_id: "#{api_id}")['id'] %>
 
 		<% if Beer.check_db_for_beer(api_id) %>
-			<% Beer.create name:beer['name'], brewery:beer['breweries'].try(:first).try(:[], :name), api_id:beer['id'], style:beer['style'].try(:[], :name), abv:beer['abv'], srm:beer['srmId'], ibu:beer['ibu'], tags:beer['tags'], description:beer['description'], label:beer["labels"].try(:[], :large) %>
+			<% Beer.create name:beer['name'], brewery:beer['breweries'].try(:first).try(:[], :name), api_id:beer['id'], style:beer['style'].try(:[], :name), abv:beer['abv'], srm:beer['srmId'], ibu:beer['ibu'], tags:beer['tags'], description:beer['description'] %>
 		<% end %>
 
 
