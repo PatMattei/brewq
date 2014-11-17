@@ -14,17 +14,17 @@
 ActiveRecord::Schema.define(version: 20141109191119) do
 
   create_table "beers", force: true do |t|
-    t.string   "name"
-    t.string   "brewery"
-    t.string   "api_id"
-    t.string   "score"
-    t.string   "style"
-    t.string   "abv"
-    t.string   "srm"
-    t.string   "ibu"
-    t.string   "tags"
-    t.string   "description"
-    t.string   "label"
+    t.text     "name"
+    t.text     "brewery"
+    t.text     "api_id"
+    t.text     "score"
+    t.text     "style"
+    t.text     "abv"
+    t.text     "srm"
+    t.text     "ibu"
+    t.text     "tags"
+    t.text     "description"
+    t.text     "label"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

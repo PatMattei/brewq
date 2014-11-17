@@ -1,17 +1,17 @@
 class CreateBeers < ActiveRecord::Migration
   def change
     create_table :beers do |t|
-      t.string :name
-      t.string :brewery
-      t.string :api_id
-      t.string :score
-      t.string :style
-      t.string :abv
-      t.string :srm
-      t.string :ibu
-      t.string :tags
-      t.string :description
-      t.string :label
+      t.text :name
+      t.text :brewery
+      t.text :api_id
+      t.text :score
+      t.text :style
+      t.text :abv
+      t.text :srm
+      t.text :ibu
+      t.text :tags
+      t.text :description
+      t.text :label
 
       t.timestamps
     end
