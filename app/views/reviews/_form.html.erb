@@ -4,5 +4,6 @@
 	</div>
 	<br>
 	<%= f.hidden_field :beer, :value => @beer.id %>
+	<%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
 	<%= f.submit class: 'btn btn-primary' %>
 <% end %>

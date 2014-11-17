@@ -11,8 +11,6 @@ class Review < ActiveRecord::Base
       User.find(author_id)["email"]
   end
 
-  
-
   def self.find_review(api_id)
     beer_db = Beer.find_by(api_id: "#{api_id}")['id'] 
     if Review.find_by(beer_id: "#{beer_db}")==nil 
@@ -24,14 +22,18 @@ class Review < ActiveRecord::Base
   end
 
 
+  def self.get_current_user_review(api_id, user_id)
+    beer_db = Beer.find_by(api_id: "#{api_id}")['id']
+    Review.find_by_user_id_and_beer_id("#{user_id}", "#{beer_db}")["body"]
+  end
+
+
   def self.create_review(api_id, user_id)
     beer_db = Beer.find_by(api_id: "#{api_id}")['id']
-
     if Review.find_by_user_id_and_beer_id("#{user_id}", "#{beer_db}")
-      review = Review.find_by_user_id_and_beer_id("#{user_id}", "#{beer_db}")["body"]
-        "Your Review: #{review}"
+      true
     else
-        "Leave a new review: BUTTON"
+      false
     end
   end
 end

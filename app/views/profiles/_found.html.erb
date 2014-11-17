@@ -25,10 +25,13 @@
 			<div class="found_reviews">
 				<%= Review.find_review(api_id) %><br>
 			</div>
-			<% user_id = current_user.id.to_i %>
-			<%= Review.create_review(api_id, user_id) %>
-		</div>
 
-		<%= link_to "Add a review for this beer", new_beer_review_path(Beer.find_by(api_id: "#{api_id}")['id']) %>
+			<% if Review.create_review(api_id, current_user.id) %>
+	  			<%= "Your Review: #{Review.get_current_user_review(api_id, current_user.id)}" %>
+    		<% else %>
+       			<%= link_to "Add a review for this beer", new_beer_review_path(Beer.find_by(api_id: "#{api_id}")['id']) %>   
+       		<% end %>
+
+		</div>
 	</div>
 <% end %>
