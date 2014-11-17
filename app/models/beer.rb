@@ -4,11 +4,6 @@ class Beer < ActiveRecord::Base
   has_many :reviews
 accepts_nested_attributes_for :reviews
 
-  def self.show_label
-    beer = Beer.find(params[:id])
-    print 
-  end
-
   def self.get_from_api(abv, taste, color)
     json_file = RestClient.get("http://api.brewerydb.com/v2/beers/?format=json&key=#{ENV['BEER_DB_API_KEY']}&withBreweries=Y&abv=#{abv}&srm=#{color}&ibu=#{taste}")  
     JSON.parse(json_file)  

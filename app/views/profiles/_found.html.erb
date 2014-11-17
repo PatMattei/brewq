@@ -3,7 +3,7 @@
 		<% api_id = beer["id"] %>
 
 		<% if Beer.check_db_for_beer(api_id) %>
-			<% Beer.create name:beer['name'], brewery:beer['breweries'][0]['name'], api_id:beer['id'], style:beer['style']['name'], abv:beer['abv'], srm:beer['srmId'], ibu:beer['ibu'], tags:beer['tags'], description:beer['description'] %>
+			<% Beer.create name:beer['name'], brewery:beer['breweries'].try(:first).try(:[], :name), api_id:beer['id'], style:beer['style'].try(:[], :name), abv:beer['abv'], srm:beer['srmId'], ibu:beer['ibu'], tags:beer['tags'], description:beer['description'], label:beer["labels"].try(:[], :large) %>
 		<% end %>
 
 
@@ -12,7 +12,7 @@
 				<div id="found_beer_info">
 					NAME: <%= beer['name'] %><br>
 					BREWERY: <%= beer['breweries'][0]['name'] %><br>
-					LABEL: <%= beer['labels'] %><br>
+					LABEL: <%= beer["labels"].try(:[], :large) %><br>
 					STYLE: <%= beer['style']['name'] %><br>
 					ABV: <%= beer['abv'] %><br>
 					SRM: <%= beer['srmId'] %><br>

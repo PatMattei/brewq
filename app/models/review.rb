@@ -3,9 +3,7 @@ class Review < ActiveRecord::Base
   belongs_to :beer
 
   belongs_to :user
-
-
-
+  
   def self.get_author(beer_db)
       author_id = Review.find_by(beer_id: "#{beer_db}")["user_id"]
       User.find(author_id)["email"]
