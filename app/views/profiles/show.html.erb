@@ -1,13 +1,11 @@
-<h1>Your Profile</h1>
+<div id="profile_header">
+	<h2>What are you in the mood for?</h2><br>
+	<%= "You are logged in as #{current_user.email}" %><br>
 
-<h2>What are you in the mood for?</h2><br>
-<%= "You are logged in as #{current_user.email}" %><br>
+	<%= "Hi, #{current_user.first_name}" %>
+</div>
 
-<%= "Hi, #{current_user.first_name}" %>
-
-
-<div class="search">
-	<hr>
+<div id="search">
 	<%= render 'search' unless @beers %>
 
 	<% if @beers %>
@@ -15,12 +13,20 @@
 	<% end %>
 </div>
 
+
+
 <div id="profile_reviews">
 	<h3>Your Reviews</h3>
-	<% current_user.reviews.each do |review| %>
-		<br>Name: <%= Beer.find(review.beer_id)["name"] %>
-		<br>Score: <%= review.score %> 
-		<br>Body: <%= review.body %>
-		<hr>
-	<% end %>
+	<div class="list-group">
+		<a href="#" class="list-group-item">
+			<% current_user.reviews.each do |review| %>
+				<h4 class="list-group-item-heading">
+					Name: <%= Beer.find(review.beer_id)["name"] %>
+				</h4>
+				<div class="list-group-item-text">
+					<%= review.body %>
+				</div>
+			<% end %>
+		</a>
+	</div>
 </div>

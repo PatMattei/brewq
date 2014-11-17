@@ -13,3 +13,42 @@
  *= require_tree .
  *= require_self
  */
+
+body {background-image: url("/images/ecailles.png");}
+
+#header {background-color: #fff;}
+
+
+.container{background-color: #fff;}
+
+
+#logo {font-family: 'Yellowtail', cursive;
+	font-size: 40pt;
+	color: #000;} 
+#logo a {color: #000;
+	text-decoration: none;} 
+
+
+#log_out {float:right;
+	margin-right: 5%;}
+
+#header {border-bottom: solid 1px #888888}
+
+#profile_header {border-bottom: solid 1px #888888;
+	margin-bottom: 25px;
+	padding-bottom: 20px;}
+
+#profile_reviews {clear: both;
+	border-top: solid 1px #888888}
+
+#search {min-height: 450px;}
+
+
+#found_beer{background-color: #fff;
+    box-shadow: 5px 5px 2px #888888;
+	width:28%;
+	margin-right:3%;
+	border: 1px solid #888888;}
+
+.found_reviews {border-bottom: 1px solid #888888;}
+

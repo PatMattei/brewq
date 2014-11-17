@@ -9,15 +9,18 @@ class Review < ActiveRecord::Base
       User.find(author_id)["email"]
   end
 
+  def self.get_body(beer_db)
+    Review.find_by(beer_id: "#{beer_db}")["body"]
+  end
+
   def self.find_review(api_id)
     beer_db = Beer.find_by(api_id: "#{api_id}")['id'] 
     if Review.find_by(beer_id: "#{beer_db}")==nil 
-      "No Reviews Yet"
-    else
-      "Author: #{Review.get_author(beer_db)}, 
-      BODY:  #{Review.find_by(beer_id: "#{beer_db}")["body"]}"
-    end 
+      false
+    end
   end
+
+
 
 
   def self.get_current_user_review(api_id, user_id)

@@ -1,5 +1,5 @@
 <h2 class='text-center'><%= @beer.name %></h2>
-<h2 class='text-center'>By <%= @beer.brewery %></h2>
+<h3 class='text-center'>By: <%= @beer.brewery %></h2>
 
 <hr>
 <br>
@@ -9,12 +9,10 @@
   	<h4>Description:</h4>
   	<p><%= @beer.description %></p>
 
-      Score: <%= @beer.score %>
-      style: <%= @beer.style %>
-      abv: <%= @beer.abv %>
-      srm: <%= @beer.srm %>
+      style: <%= @beer.style %><br>
+      abv: <%= @beer.abv %><br>
+      srm: <%= @beer.srm %><br>
       ibu: <%= @beer.ibu %>
-      tags: <%= @beer.tags %>
 
   	<h4>Reviews:</h4>
     <% if Review.create_review(@beer.api_id, current_user.id) %>

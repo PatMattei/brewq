@@ -3,17 +3,25 @@
 <head>
   <title>Brew Q?</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://bootswatch.com/spacelab/bootstrap.css">
+  <link href='http://fonts.googleapis.com/css?family=Yellowtail' rel='stylesheet' type='text/css'>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<h1><%= link_to 'Brew Q?', root_path %></h1>
-	<hr>
+	<div id="header">
+		<div id="logo"><%= link_to 'Brew Q?', root_path %></div>
+
+		<div id="log_out">
+			<% if user_signed_in? %>
+				<%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+			<% end %>
+		</div>
+	</div>
 	
-	<% if user_signed_in? %>
-		<%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-	<% end %>
+
 	<%= alert %>
 	<div class="container">
       <%= yield %>
