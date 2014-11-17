@@ -3,21 +3,24 @@
 <h2>What are you in the mood for?</h2><br>
 <%= "You are logged in as #{current_user.email}" %><br>
 
-
-<%= render 'search' unless @beers %>
-
-<% if @beers %>
-  <%= render 'found' %>
-<% end %>
-
-<h3>Your Reviews</h3>
+<%= "Hi, #{current_user.first_name}" %>
 
 
-
-<% current_user.reviews.each do |review| %>
-	<br>Name: <%= Beer.find(review.beer_id)["name"] %>
-	<br>Score: <%= review.score %> 
-	<br>Body: <%= review.body %>
+<div class="search">
 	<hr>
- <% end %>
+	<%= render 'search' unless @beers %>
 
+	<% if @beers %>
+	  <%= render 'found' %>
+	<% end %>
+</div>
+
+<div id="profile_reviews">
+	<h3>Your Reviews</h3>
+	<% current_user.reviews.each do |review| %>
+		<br>Name: <%= Beer.find(review.beer_id)["name"] %>
+		<br>Score: <%= review.score %> 
+		<br>Body: <%= review.body %>
+		<hr>
+	 <% end %>
+</div>

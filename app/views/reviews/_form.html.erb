@@ -1,9 +1,8 @@
-<%= simple_form_for @beer do |f| %>
-<% f.simple_fields_for :reviews do |p| %>
-  <div class="input-group">
-    <%= p.input  :body %>
-  </div>
-  <br>
-  <%= p.submit class: 'btn btn-primary' %>
-  <% end %>
+<%= simple_form_for @review,  :url => url_for(:controller => 'reviews', :action => 'create') do |f| %>
+	<div class="input-group">
+		<%= f.input  :body %>
+	</div>
+	<br>
+	<%= f.hidden_field :beer, :value => @beer.id %>
+	<%= f.submit class: 'btn btn-primary' %>
 <% end %>

@@ -5,22 +5,22 @@ class Review < ActiveRecord::Base
   belongs_to :user
 
 
+
+  def self.get_author(beer_db)
+      author_id = Review.find_by(beer_id: "#{beer_db}")["user_id"]
+      User.find(author_id)["email"]
+  end
+
+  
+
   def self.find_review(api_id)
     beer_db = Beer.find_by(api_id: "#{api_id}")['id'] 
     if Review.find_by(beer_id: "#{beer_db}")==nil 
-      "No Reviews"
-    else 
-       Review.find_by(beer_id: "#{beer_db}")["body"]
+      "No Reviews Yet"
+    else
+      "Author: #{Review.get_author(beer_db)}, 
+      BODY:  #{Review.find_by(beer_id: "#{beer_db}")["body"]}"
     end 
-  end
-
-  def self.find_review_author(api_id)
-    beer_db = Beer.find_by(api_id: "#{api_id}")['id'] 
-    if Review.find_by(beer_id: "#{beer_db}")!=nil
-      user = Review.find_by(beer_id: "#{beer_db}")['user_id']
-      email = User.find("#{user}")['email']
-      "By: #{email}"
-    end
   end
 
 

@@ -10,8 +10,8 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @review = Review.new
     @beer = Beer.find(params[:beer_id])
-    @beer.reviews.build
   end
 
   def create
