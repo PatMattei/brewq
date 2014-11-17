@@ -1,7 +1,6 @@
 <% @beers.each do |beer| %>
 	<div id= "found_beer" class="col-md-4">
 		<% api_id = beer["id"] %>
-		<% beer_db = Beer.find_by(api_id: "#{api_id}")['id'] %>
 
 		<% if Beer.check_db_for_beer(api_id) %>
 			<% Beer.create name:beer['name'], brewery:beer['breweries'].try(:first).try(:[], :name), api_id:beer['id'], style:beer['style'].try(:[], :name), abv:beer['abv'], srm:beer['srmId'], ibu:beer['ibu'], tags:beer['tags'], description:beer['description'], label:beer["labels"].try(:[], :large) %>
@@ -21,6 +20,9 @@
 				</div>
 			<% end %>
 			
+			<% beer_db = Beer.find_by(api_id: "#{api_id}")['id'] %>
+
+
 			Recent Reviews:
 			<div class="found_reviews">
 				<% if Review.find_review(api_id)==false %>
