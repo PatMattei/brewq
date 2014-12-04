@@ -1,6 +1,5 @@
 <% @beers.each do |beer| %>
 	<div id="found_beer" class="col-md-4">
-		if 
 			<% api_id = beer['id'] %>
 			<% beer_name = beer['name']  %>
 			<% beer_brewery = beer['breweries'][0]['name'] %>
@@ -9,8 +8,12 @@
 			<% beer_srm = beer['srmId'] %>
 			<% beer_ibu = beer['ibu'] %>
 			<% beer_description = beer['description'] %>
-			<% beer_labels = "test" %>
 
+			<% if beer['labels'] %>		
+				<% beer_labels = beer['labels']['large'].to_s %>
+			<% else beer_labels = nil %>
+			<% end %>
+				
 			<% if Beer.check_db_for_beer(api_id) %>
 				<% Beer.add_beer_to_db(beer_name, beer_brewery, api_id, beer_style, beer_abv, beer_srm, beer_ibu, beer_description, beer_labels) %>
 			<% end %>
@@ -19,6 +22,8 @@
 		<div id="found_beer_info">
 			<%= link_to "../beers/#{Beer.find_by(api_id: "#{api_id}")['id']}" do %>
 				<div id="found_beer_info">
+
+					<%= image_tag("#{beer_labels}", width:"150", height:"150") %><br>
 					NAME: <%= beer_name %><br>
 					BREWERY: <%= beer_brewery %><br>
 					STYLE: <%= beer_style %><br>
