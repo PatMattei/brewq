@@ -11,7 +11,8 @@
 
 			<% if beer['labels'] %>		
 				<% beer_labels = beer['labels']['large'].to_s %>
-			<% else beer_labels = nil %>
+			<% else %>
+				<% beer_labels = "no-label.png" %>
 			<% end %>
 				
 			<% if Beer.check_db_for_beer(api_id) %>

@@ -52,3 +52,13 @@ body {background-image: url("/images/beer_background.jpg")}
 
 .found_reviews {border-bottom: 1px solid #888888;}
 
+#found_beer_info {}
+#found_beer_info img {
+	margin-left: 25%;
+}
+
+#beer_info img {
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}

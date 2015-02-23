@@ -11,7 +11,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div id="header">
+		<div id="header">
 		<div id="logo"><%= link_to 'Brew Q?', root_path %></div>
 
 		<div id="log_out">
@@ -24,7 +24,10 @@
 
 	<%= alert %>
 	<div class="container">
-      <%= yield %>
+    	<%= yield %>
+    	<div id="footer">
+	    	<%= image_tag("Powered-By-BreweryDB_banner.png", width:"250", height:"63") %>
+		</div>
 	</div>
 
 </body>

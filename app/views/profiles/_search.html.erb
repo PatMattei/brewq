@@ -8,5 +8,6 @@
   <div class="input-group">
     <%= f.input  :abv, collection: [["0-4.9%","0,4.9"], ["5.0%-7.9%", "5.0,7.9"], ["8.0%-10.9%", "8.0,10.9"], ["11.0%-PARTY TIME", "11,100"]], label: "With an ABV (Alcohol By Volume) of:" %>
   </div>
+  <br>
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>

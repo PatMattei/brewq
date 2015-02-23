@@ -3,8 +3,16 @@
 
 <hr>
 <br>
-<div>
-	<%= image_tag(@beer.label) %>
+<div id="beer_info">
+
+  <% label = @beer.label %>
+
+  <% if label == nil %>
+    <%= image_tag("no-label.png", width:"150", height:"150") %> 
+  <% else %>
+    <%= image_tag(label, width:"150", height:"150") %> 
+  <% end %>
+
 
   	<h4>Description:</h4>
   	<p><%= @beer.description %></p>
