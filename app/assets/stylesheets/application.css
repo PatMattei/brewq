@@ -62,3 +62,8 @@ body {background-image: url("/images/beer_background.jpg")}
 	margin-right: 20px;
 	margin-bottom: 20px;
 }
+
+
+#profile_information {
+	float: right;
+}
