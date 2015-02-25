@@ -67,3 +67,8 @@ body {background-image: url("/images/beer_background.jpg")}
 #profile_information {
 	float: right;
 }
+
+#recent_reviews {
+	float: right;
+	margin-right: 25%;
+}

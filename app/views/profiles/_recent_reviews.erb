@@ -1,0 +1,12 @@
+<h3>Recent Reviews</h3>
+<% if Review.all.length > 0 %>
+	<% Review.last(3).each do |review| %>
+		<% beer_id = review["beer_id"] %>
+		<h4 class="list-group-item-heading">
+			<%= Beer.find(review.beer_id)["name"] %>
+		</h4> 
+		<%= review["body"] %>
+	<% end %>
+<% else %>
+	<%= "No Reviews in the System" %>
+<% end %>
