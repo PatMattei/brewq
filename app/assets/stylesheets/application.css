@@ -68,7 +68,31 @@ body {background-image: url("/images/beer_background.jpg")}
 	float: right;
 }
 
+
+
 #recent_reviews {
 	float: right;
-	margin-right: 25%;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	width: 40%;
+}
+
+
+#recent_reviews h3{
+	margin-top: 0
+}
+.recent_review {
+	margin-bottom: 10px;
+	border-bottom: solid grey 2px;
+	clear: both;
+	min-height: 125px;
+}
+.recent_review_image {
+	float:left;
+	padding-right: 4%;
+}
+
+.recent_review img {
+	max-height: 100px;
+	max-width: 100px;
 }

@@ -2,10 +2,24 @@
 <% if Review.all.length > 0 %>
 	<% Review.last(3).each do |review| %>
 		<% beer_id = review["beer_id"] %>
-		<h4 class="list-group-item-heading">
-			<%= Beer.find(review.beer_id)["name"] %>
-		</h4> 
-		<%= review["body"] %>
+		<% author_id = review["user_id"] %>
+		
+		<%= link_to("/beers/#{beer_id}") do %>
+			<div class="recent_review">
+				<div class="recent_review_image">
+					<%= image_tag("#{Beer.find(review.beer_id)["label"]}", width:"150", height:"150") %>
+				</div>
+				<h4 class="list-group-item-heading">
+					<%= Beer.find(review.beer_id)["name"] %>
+				</h4>
+				<div class="recent_review_author">
+					By: <%= User.find(author_id)["first_name"] %>
+				</div>
+				<div class="recent_review_body">
+					<%= truncate(review["body"], length: 50) %>
+				</div>
+			</div>
+		<% end %>
 	<% end %>
 <% else %>
 	<%= "No Reviews in the System" %>

@@ -32,7 +32,7 @@
 
 
     <% @beer.reviews.each do |review| %>
-    	<p>By: <%= User.find(review.user_id)["email"] %>
+    	<p>By: <%= User.find(review.user_id)["first_name"] %>
         <br><%= review.body %>
         <br>Last Updated: <%= review.updated_at %></p>
   	<% end %>
