@@ -1,11 +1,11 @@
 <div id="profile_header">
 	<div id ="profile_information">
 		<% if user_signed_in? %> 
-			<%= "You are logged in as #{current_user.email}" %><br>
-
+			<%= "You are logged in as #{current_user.email}" %>
+			<br>
 			<%= "Hi, #{current_user.first_name}" %>
 		<% else %>
-			<%= "Log in to leave Notes" %>
+			<%= link_to 'Log in to leave Notes', new_user_session_path %>
 		<% end %>
 	</div>
 
@@ -22,27 +22,10 @@
 	<div id="search">
 		<%= render 'search' unless @beers %>
 
-
 		<% if @beers %>
 		  <%= render 'found' %>
 		<% end %>
 	</div>
-</div>
 
-<% if user_signed_in? %> 
-	<div id="profile_reviews">
-		<h3>Your Reviews</h3>
-		<div class="list-group">
-			<a href="#" class="list-group-item">
-				<% current_user.reviews.each do |review| %>
-					<h4 class="list-group-item-heading">
-						Name: <%= Beer.find(review.beer_id)["name"] %>
-					</h4>
-					<div class="list-group-item-text">
-						<%= review.body %>
-					</div>
-				<% end %>
-			</a>
-		</div>
-	</div>
-<% end %>
+	<%= render 'user_reviews' unless @beers %>
+</div>

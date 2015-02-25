@@ -17,6 +17,9 @@
 body {background-image: url("/images/beer_background.jpg")}
 
 #header {background-color: #fff;}
+#footer {
+	border-top: 2px solid #888;
+}
 
 
 .container{background-color: #fff;}
