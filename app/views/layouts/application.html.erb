@@ -11,25 +11,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-		<div id="header">
-		<div id="logo"><%= link_to 'Brew Q?', root_path %></div>
-
+	<div id="header">
 		<div id="log_out">
 			<% if user_signed_in? %>
 				<%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+			<% else %>
+				<%= link_to 'Log in to leave Notes', new_user_session_path %>
 			<% end %>
 		</div>
+		<div id="logo"><%= link_to 'Brew Q?', root_path %></div>
 	</div>
 	
 
 	<%= alert %>
+
 	<div class="container">
     	<%= yield %>
-    	<div id="footer">
-	    	<%= image_tag("Powered-By-BreweryDB_banner.png", width:"250", height:"63") %>
+    	<div id="footer" class="col-md-12">
+	    	<%= link_to image_tag("Powered-By-BreweryDB_banner.png", width:"250", height:"63"), "http://www.brewerydb.com/" %>
 	    	<span style="float:right">Site created by Patrick Mattei -- <a href="http://patrickmattei.com">patrickmattei.com</a></p>
 		</div>
 	</div>
-
 </body>
 </html>

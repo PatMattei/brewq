@@ -16,7 +16,7 @@
 					By: <%= User.find(author_id)["first_name"] %>
 				</div>
 				<div class="recent_review_body">
-					<%= truncate(review["body"], length: 50) %>
+					<%= truncate(review["body"], length: 120) %>
 				</div>
 			</div>
 		<% end %>

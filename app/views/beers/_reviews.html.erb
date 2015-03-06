@@ -1,0 +1,28 @@
+<% if user_signed_in? %>
+  <% if Review.create_review(@beer.api_id, current_user.id) %>
+    <div class="review">
+      Your Review: <%= Review.get_current_user_review(@beer.api_id, current_user.id)["body"] %>
+      <% my_review = Review.get_current_user_review(@beer.api_id, current_user.id) %>
+      <br>Last Updated: <%=my_review.updated_at %>
+    </div>
+  <% else %>
+      <%= link_to "Add a review for this beer", new_beer_review_path(Beer.find_by(api_id: @beer.api_id)['id']) %> 
+      <br>  
+  <% end %>
+<% else %>
+  <%= link_to("Sign in to leave a Review", new_user_session_path) %>
+  <br>
+<% end %>
+
+
+<% if @beer.reviews.length > 0 %> 
+  <% @beer.reviews.last(5).each do |review| %>
+  	<div class="review">
+      By: <%= User.find(review.user_id)["first_name"] %>
+      <br><%= review.body %>
+      <br>Last Updated: <%= review.updated_at %>
+    </div>
+  <% end %>
+<% else %>
+  <%= "No Reviews Yet" %>
+<% end %>

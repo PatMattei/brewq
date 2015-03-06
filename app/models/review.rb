@@ -22,7 +22,7 @@ class Review < ActiveRecord::Base
 
   def self.get_current_user_review(api_id, user_id)
     beer_db = Beer.find_by(api_id: "#{api_id}")['id']
-    Review.find_by_user_id_and_beer_id("#{user_id}", "#{beer_db}")["body"]
+    Review.find_by_user_id_and_beer_id("#{user_id}", "#{beer_db}")
   end
 
 

@@ -16,33 +16,22 @@
 
   	<h4>Description:</h4>
   	<p><%= @beer.description %></p>
+    <hr>
+    
+    <div class="stats col-md-4">
+      <h4>Stats:</h4>
+      Style: <%= @beer.style %><br>
+      ABV: <%= @beer.abv %><br>
+      SRM: <%= @beer.srm %><br>
+      IBU: <%= @beer.ibu %>
+    </div>
 
-      style: <%= @beer.style %><br>
-      abv: <%= @beer.abv %><br>
-      srm: <%= @beer.srm %><br>
-      ibu: <%= @beer.ibu %>
+    <div class="beer_reviews col-md-8">
+    	<h4>Reviews:</h4>
+      <%= render 'reviews' %> 
+    </div>      
 
-  	<h4>Reviews:</h4>
-    <% if user_signed_in? %>
-      <% if Review.create_review(@beer.api_id, current_user.id) %>
-        <%= "Your Review: #{Review.get_current_user_review(@beer.api_id, current_user.id)}" %>
-      <% else %>
-          <%= link_to "Add a review for this beer", new_beer_review_path(Beer.find_by(api_id: @beer.api_id)['id']) %> 
-          <br>  
-      <% end %>
-    <% else %>
-      <%= link_to("Sign in to leave a Review", new_user_session_path) %>
-      <br>
-    <% end %>
-  	
-
-    <% if @beer.reviews.length > 0 %> 
-      <% @beer.reviews.each do |review| %>
-      	<p>By: <%= User.find(review.user_id)["first_name"] %>
-          <br><%= review.body %>
-          <br>Last Updated: <%= review.updated_at %></p>
-      <% end %>
-  	<% else %>
-      <%= "No Reviews Yet" %>
-    <% end %>
+    <div class="col-md-12">
+      <%= link_to 'Try a New Search', root_path, id:"btn-home", class:"btn btn-primary " %>
+    </div>
 </div>

@@ -9,6 +9,7 @@ class Beer < ActiveRecord::Base
     JSON.parse(json_file)  
   end
 
+
   def self.check_db_for_beer(api_id)
     Beer.where(:api_id => "#{api_id}").blank?
   end

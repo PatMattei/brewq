@@ -1,29 +1,28 @@
 <% @beers.each do |beer| %>
 	<div id="found_beer" class="col-md-4">
-			<% api_id = beer['id'] %>
-			<% beer_name = beer['name']  %>
-			<% beer_brewery = beer['breweries'][0]['name'] %>
-			<% beer_style = beer['style']['name'] %>
-			<% beer_abv = beer['abv'] %>
-			<% beer_srm = beer['srmId'] %>
-			<% beer_ibu = beer['ibu'] %>
-			<% beer_description = beer['description'] %>
+		<% api_id = beer['id'] %>
+		<% beer_name = beer['name']  %>
+		<% beer_brewery = beer['breweries'][0]['name'] %>
+		<% beer_style = beer['style']['name'] %>
+		<% beer_abv = beer['abv'] %>
+		<% beer_srm = beer['srmId'] %>
+		<% beer_ibu = beer['ibu'] %>
+		<% beer_description = beer['description'] %>
 
-			<% if beer['labels'] %>		
-				<% beer_labels = beer['labels']['large'].to_s %>
-			<% else %>
-				<% beer_labels = "no-label.png" %>
-			<% end %>
-				
-			<% if Beer.check_db_for_beer(api_id) %>
-				<% Beer.add_beer_to_db(beer_name, beer_brewery, api_id, beer_style, beer_abv, beer_srm, beer_ibu, beer_description, beer_labels) %>
-			<% end %>
+		<% if beer['labels'] %>		
+			<% beer_labels = beer['labels']['large'].to_s %>
+		<% else %>
+			<% beer_labels = "no-label.png" %>
+		<% end %>
+			
+		<% if Beer.check_db_for_beer(api_id) %>
+			<% Beer.add_beer_to_db(beer_name, beer_brewery, api_id, beer_style, beer_abv, beer_srm, beer_ibu, beer_description, beer_labels) %>
+		<% end %>
 
 
 		<div id="found_beer_info">
 			<%= link_to "../beers/#{Beer.find_by(api_id: "#{api_id}")['id']}" do %>
 				<div id="found_beer_info">
-
 					<%= image_tag("#{beer_labels}", width:"150", height:"150") %><br>
 					NAME: <%= beer_name %><br>
 					BREWERY: <%= beer_brewery %><br>
@@ -50,7 +49,7 @@
 
 			<% if user_signed_in? %>
 				<% if Review.create_review(api_id, current_user.id) %>
-		  			<%= "Your Review: #{truncate(Review.get_current_user_review(api_id, current_user.id), length: 100)}" %>
+		  			<%= "Your Review: #{truncate(Review.get_current_user_review(api_id, current_user.id)["body"], length: 100)}" %>
 	    		<% else %>
 	       			<%= link_to "Add a review for this beer", new_beer_review_path(Beer.find_by(api_id: "#{api_id}")['id']) %>   
 	       		<% end %>

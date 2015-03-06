@@ -2,9 +2,8 @@
 	<div id="profile_reviews">
 		<h3>Your Recent Reviews</h3>
 		<div class="list-group">
-			<% current_user.reviews.each do |review| %>
+			<% current_user.reviews.last(5).each do |review| %>
 				<% beer_id = review["beer_id"] %>
-
 				<%= link_to("/beers/#{beer_id}") do %>
 					<div class="list-group-item">
 						<h4 class="list-group-item-heading">

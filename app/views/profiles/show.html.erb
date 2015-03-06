@@ -4,15 +4,12 @@
 			<%= "You are logged in as #{current_user.email}" %>
 			<br>
 			<%= "Hi, #{current_user.first_name}" %>
-		<% else %>
-			<%= link_to 'Log in to leave Notes', new_user_session_path %>
 		<% end %>
 	</div>
 
 	<h2>What are you in the mood for?</h2><br>
-
-
 </div>
+
 <div id="main">
 	<div id ="recent_reviews">
 		<%= render 'recent_reviews' unless @beers %>

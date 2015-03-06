@@ -1,13 +1,12 @@
 <%= simple_form_for :beer, url: profile_beer_search_path do |f| %>
-  <div class="input-group">
-    <%= f.input  :color, collection: [["Light", "1,20"], ["Dark", "20,40"]], label: "I want a beer that's:" %>
-  </div>
-  <div class="input-group">
-    <%= f.input  :taste,  collection: [["Sweet", "0,50"], ["Sour", "50,100"]], label: "And tastes:" %>
-  </div>
-  <div class="input-group">
-    <%= f.input  :abv, collection: [["0-4.9%","0,4.9"], ["5.0%-7.9%", "5.0,7.9"], ["8.0%-10.9%", "8.0,10.9"], ["11.0%-PARTY TIME", "11,100"]], label: "With an ABV (Alcohol By Volume) of:" %>
+  <%= f.error_notification %>
+  <div class="form-inputs" style="width: 40%">
+    <%= f.input  :color,  required: true, collection: [["Light", "1,20"], ["Dark", "20,40"]], label: "I want a beer that's:" %>
+    <%= f.input  :taste,   collection: [["Sweet", "0,50"], ["Sour", "50,100"]], label: "And tastes:" %>
+    <%= f.input  :abv,  collection: [["0-4.9%","0,4.9"], ["5.0%-7.9%", "5.0,7.9"], ["8.0%-10.9%", "8.0,10.9"], ["11.0%-PARTY TIME", "11,100"]], label: "With an ABV (Alcohol By Volume) of:" %>
   </div>
   <br>
-  <%= f.submit class: 'btn btn-primary' %>
+  <div class="form-actions">
+    <%= f.button :submit, "Search", class: 'btn btn-primary', id: 'search_beer' %>
+  </div>
 <% end %>
